@@ -3,10 +3,10 @@ import { Github, Linkedin, Instagram, Facebook, MessageCircle, Send, Mail } from
 
 const socialLinks = [
   { name: "GitHub", icon: Github, url: "https://github.com/bart-codes", color: "hover:text-gray-400" },
-  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/bart-codes", color: "hover:text-blue-400" },
-  { name: "Instagram", icon: Instagram, url: "https://instagram.com/bart.codes", color: "hover:text-pink-400" },
-  { name: "Facebook", icon: Facebook, url: "https://facebook.com/bart.codes", color: "hover:text-blue-500" },
-  { name: "WhatsApp", icon: MessageCircle, url: "https://wa.me/1234567890", color: "hover:text-green-400" }
+  { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com/in/brian-muturi-81129325b", color: "hover:text-blue-400" },
+  { name: "Instagram", icon: Instagram, url: "https://www.instagram.com/bartedmuturi?stkn=aXFwOGZuazNna3Z5", color: "hover:text-pink-400" },
+  { name: "Facebook", icon: Facebook, url: "https://www.facebook.com/share/1Dh5NiGmpd/", color: "hover:text-blue-500" },
+  { name: "WhatsApp", icon: MessageCircle, url: "https://wa.me/@bartedmuturi", color: "hover:text-green-400" }
 ];
 
 export default function Contact() {
