@@ -32,7 +32,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="min-h-screen py-20 px-6 relative overflow-hidden">
+    <section id="contact" className="min-h-screen py-20 px-6 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute top-40 left-10 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl" />
       <div className="absolute bottom-40 right-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />

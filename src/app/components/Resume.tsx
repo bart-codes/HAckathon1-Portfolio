@@ -27,16 +27,15 @@ const experience = [
 
 const education = [
   {
-    degree: "Certificate, PLP Academy",
+    degree: "Certificate in MERN",
     school: "PLP Academy, Nairobi",
     period: "July 2025 - Present",
     note: "Enrolled in the July 2025 cohort.",
   },
   {
     degree: "Diploma in Software Engineering",
-    school:
-      "Kenya Institute of Software Engineering and Professional Studies (K.I.S.E), Thika",
-    period: "Jan 2025 - Present",
+    school: "K.I.S.E (Kenya Institute of Software Engineering), Thika",
+    period: "Jan 2025 - 2026",
     note: "Studying on site.",
   },
 ];
@@ -62,6 +61,14 @@ const awards = [
   {
     title: "Certificate in Software",
     issuer: "Issued by the A.E.T.E.B board of examiners",
+  },
+  {
+    title: "Certificate in MERN",
+    issuer: "PLP Academy, Nairobi",
+  },
+  {
+    title: "Diploma in Software Engineering",
+    issuer: "K.I.S.E (Kenya Institute of Software Engineering), Thika",
   },
 ];
 

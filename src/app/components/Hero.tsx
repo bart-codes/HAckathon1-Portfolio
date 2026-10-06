@@ -1,13 +1,6 @@
-import { Download } from "lucide-react";
+const portraitUrl = new URL("../../../brian.webp", import.meta.url).href;
 
 export default function Hero() {
-  const handleDownloadResume = () => {
-    // Create a mock resume download
-    const link = document.createElement('a');
-    link.href = '#resume';
-    link.click();
-  };
-
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-6">
       {/* Animated background gradient orbs */}
@@ -15,6 +8,12 @@ export default function Hero() {
       <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/30 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
       <div className="relative z-10 max-w-4xl mx-auto text-center">
+        <img
+          src={portraitUrl}
+          alt="Bart Muturi"
+          className="w-36 h-36 md:w-44 md:h-44 object-cover rounded-full border-4 border-white/20 shadow-xl shadow-blue-500/20 mx-auto mb-8"
+        />
+
         {/* Brand name */}
         <div className="mb-8">
           <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-blue-500 bg-clip-text text-transparent mb-2">
@@ -40,14 +39,13 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* CTA Button */}
-        <button
-          onClick={handleDownloadResume}
+        {/* Contact CTA */}
+        <a
+          href="#contact"
           className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/50"
         >
-          <Download className="w-5 h-5 group-hover:animate-bounce" />
-          Download Resume
-        </button>
+          Contact Me
+        </a>
       </div>
     </section>
   );

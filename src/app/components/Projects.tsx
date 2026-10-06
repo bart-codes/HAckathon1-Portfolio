@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Calendar, ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 
 type Section = {
   heading: string;
@@ -7,26 +7,22 @@ type Section = {
   bullets?: string[];
 };
 
-type BlogPost = {
+type Project = {
   id: number;
   title: string;
-  date?: string; // add a real date, e.g. "April 15, 2026". It only shows when set.
   excerpt: string;
   tag: string;
-  readTime: string;
   content: Section[];
-  links?: { label: string; href: string }[]; // add live demo / repo links when ready
+  links?: { label: string; href: string }[];
 };
 
-const blogPosts: BlogPost[] = [
+const projects: Project[] = [
   {
     id: 1,
     title: "Building SkillSwap: a MERN platform where people trade skills",
     excerpt:
       "How I put together matching, real-time chat and session scheduling with React, Express, MongoDB, JWT and Socket.io.",
     tag: "Full-Stack",
-    readTime: "4 min read",
-    // TODO: add date and links
     content: [
       {
         heading: "The idea",
@@ -70,8 +66,6 @@ const blogPosts: BlogPost[] = [
     excerpt:
       "A React and Express app where admins coordinate fields and agents record crop progress, with field status computed automatically.",
     tag: "Full-Stack",
-    readTime: "5 min read",
-    // TODO: add date and links
     content: [
       {
         heading: "The problem",
@@ -124,8 +118,6 @@ const blogPosts: BlogPost[] = [
     excerpt:
       "My capstone for the JP International examination: separate admin and student dashboards with prepared statements, hashed passwords, CSRF tokens and session timeouts.",
     tag: "Security",
-    readTime: "4 min read",
-    // TODO: add date and links
     content: [
       {
         heading: "The problem",
@@ -167,8 +159,6 @@ const blogPosts: BlogPost[] = [
     excerpt:
       "A design blueprint for a trauma-informed platform: anonymous profiles, client-side encrypted journals, a quick-exit button and strict access control.",
     tag: "Architecture",
-    readTime: "5 min read",
-    // TODO: add date. Keep this post at concept level: no schema, keys or endpoint details.
     content: [
       {
         heading: "A design, not a shipped product",
@@ -220,62 +210,59 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
-export default function Blog() {
+export default function Projects() {
   const [activeId, setActiveId] = useState<number | null>(null);
   const sectionRef = useRef<HTMLElement | null>(null);
 
-  const activePost = blogPosts.find((post) => post.id === activeId) ?? null;
+  const activeProject = projects.find((project) => project.id === activeId) ?? null;
 
-  const showPost = (id: number | null) => {
+  const showProject = (id: number | null) => {
     setActiveId(id);
     sectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
-    <section ref={sectionRef} id="blog" className="min-h-screen py-20 px-6">
+    <section
+      ref={sectionRef}
+      id="projects"
+      aria-labelledby="projects-heading"
+      className="min-h-screen py-20 px-6"
+    >
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-4">
-            bart-codes <span className="text-blue-400">[Blog]</span>
+          <h2 id="projects-heading" className="text-5xl md:text-6xl font-bold text-white mb-4">
+            Selected <span className="text-blue-400">Projects</span>
           </h2>
-          <p className="text-gray-400 text-lg">Notes from the projects I've built</p>
+          <p className="text-gray-400 text-lg">
+            A selection of projects and concepts I have worked on
+          </p>
         </div>
 
-        {activePost ? (
-          /* Single post view */
+        {activeProject ? (
+          /* Single project view */
           <article className="max-w-3xl mx-auto">
             <button
               type="button"
-              onClick={() => showPost(null)}
+              onClick={() => showProject(null)}
               className="group flex items-center gap-2 text-blue-400 font-medium mb-8 hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
             >
               <ArrowLeft className="w-4 h-4" />
-              All posts
+              All projects
             </button>
 
             <div className="mb-4">
               <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium">
-                {activePost.tag}
+                {activeProject.tag}
               </span>
             </div>
 
             <h3 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              {activePost.title}
+              {activeProject.title}
             </h3>
 
-            <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-10">
-              {activePost.date && (
-                <span className="flex items-center gap-2">
-                  <Calendar className="w-4 h-4" />
-                  <time>{activePost.date}</time>
-                </span>
-              )}
-              <span>{activePost.readTime}</span>
-            </div>
-
             <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 space-y-8">
-              {activePost.content.map((section) => (
+              {activeProject.content.map((section) => (
                 <div key={section.heading}>
                   <h4 className="text-2xl font-bold text-white mb-3">
                     {section.heading}
@@ -296,9 +283,9 @@ export default function Blog() {
               ))}
             </div>
 
-            {activePost.links && activePost.links.length > 0 && (
+            {activeProject.links && activeProject.links.length > 0 && (
               <div className="flex flex-wrap gap-3 mt-8">
-                {activePost.links.map((link) => (
+                {activeProject.links.map((link) => (
                   <a
                     key={link.href}
                     href={link.href}
@@ -314,61 +301,50 @@ export default function Blog() {
 
             <button
               type="button"
-              onClick={() => showPost(null)}
+              onClick={() => showProject(null)}
               className="group flex items-center gap-2 text-blue-400 font-medium mt-10 hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
             >
               <ArrowLeft className="w-4 h-4" />
-              Back to all posts
+              Back to all projects
             </button>
           </article>
         ) : (
-          /* Blog grid */
+          /* Project grid */
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {blogPosts.map((post) => (
+            {projects.map((project) => (
               <article
-                key={post.id}
-                onClick={() => showPost(post.id)}
+                key={project.id}
+                onClick={() => showProject(project.id)}
                 className="group backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:bg-white/10 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/20 hover:-translate-y-1 cursor-pointer"
               >
                 {/* Tag */}
                 <div className="mb-4">
                   <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 rounded-full text-blue-300 text-sm font-medium">
-                    {post.tag}
+                    {project.tag}
                   </span>
                 </div>
 
                 {/* Title */}
                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
-                  {post.title}
+                  {project.title}
                 </h3>
 
-                {/* Date and read time */}
-                <div className="flex flex-wrap items-center gap-4 text-gray-400 text-sm mb-4">
-                  {post.date && (
-                    <span className="flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      <time>{post.date}</time>
-                    </span>
-                  )}
-                  <span>{post.readTime}</span>
-                </div>
-
-                {/* Excerpt */}
+                {/* Project summary */}
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  {post.excerpt}
+                  {project.excerpt}
                 </p>
 
-                {/* Read more link (a real button, so keyboard users can open posts) */}
+                {/* Details link (a real button, so keyboard users can open projects) */}
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    showPost(post.id);
+                    showProject(project.id);
                   }}
-                  aria-label={`Read more: ${post.title}`}
+                  aria-label={`View project details: ${project.title}`}
                   className="flex items-center gap-2 text-blue-400 font-medium group-hover:gap-3 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
                 >
-                  Read more
+                  View project
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </article>
