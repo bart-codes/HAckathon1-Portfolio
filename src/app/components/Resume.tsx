@@ -2,7 +2,6 @@ import {
   Briefcase,
   GraduationCap,
   Code2,
-  Rocket,
   Award,
   Languages,
   FileText,
@@ -37,16 +36,6 @@ const education = [
     school: "K.I.S.E (Kenya Institute of Software Engineering), Thika",
     period: "Jan 2025 - 2026",
     note: "Studying on site.",
-  },
-];
-
-const projects = [
-  {
-    name: "ClassConnect",
-    type: "Learning management system",
-    status: "In progress",
-    description:
-      "Designing a learning management system that helps students collaborate with each other.",
   },
 ];
 
@@ -159,36 +148,6 @@ export default function Resume() {
               </div>
             </div>
 
-            {/* Projects */}
-            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-3 bg-cyan-500/20 rounded-lg border border-cyan-500/30">
-                  <Rocket className="w-6 h-6 text-cyan-400" />
-                </div>
-                <h3 className="text-3xl font-bold text-white">Projects</h3>
-              </div>
-
-              <div className="space-y-6">
-                {projects.map((project, index) => (
-                  <div
-                    key={index}
-                    className="relative pl-6 border-l-2 border-cyan-500/30"
-                  >
-                    <div className="absolute -left-2 top-0 w-4 h-4 bg-cyan-500 rounded-full border-2 border-gray-900" />
-                    <h4 className="text-xl font-bold text-white mb-1">
-                      {project.name}
-                    </h4>
-                    <p className="text-cyan-400 font-medium mb-1">
-                      {project.type}
-                    </p>
-                    <p className="text-gray-400 text-sm mb-3">
-                      {project.status}
-                    </p>
-                    <p className="text-gray-300">{project.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Side column */}

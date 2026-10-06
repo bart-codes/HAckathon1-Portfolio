@@ -23,6 +23,12 @@ const projects: Project[] = [
     excerpt:
       "How I put together matching, real-time chat and session scheduling with React, Express, MongoDB, JWT and Socket.io.",
     tag: "Full-Stack",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/bart-codes/skilswap-final-capstone",
+      },
+    ],
     content: [
       {
         heading: "The idea",
@@ -66,6 +72,12 @@ const projects: Project[] = [
     excerpt:
       "A React and Express app where admins coordinate fields and agents record crop progress, with field status computed automatically.",
     tag: "Full-Stack",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/bart-codes/SmartSeason_Field_Monitorig_System",
+      },
+    ],
     content: [
       {
         heading: "The problem",
@@ -118,6 +130,12 @@ const projects: Project[] = [
     excerpt:
       "My capstone for the JP International examination: separate admin and student dashboards with prepared statements, hashed passwords, CSRF tokens and session timeouts.",
     tag: "Security",
+    links: [
+      {
+        label: "View on GitHub",
+        href: "https://github.com/bart-codes/Student-records-management-systems",
+      },
+    ],
     content: [
       {
         heading: "The problem",
@@ -347,6 +365,18 @@ export default function Projects() {
                   View project
                   <ArrowRight className="w-4 h-4" />
                 </button>
+                {project.links?.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(event) => event.stopPropagation()}
+                    className="inline-flex items-center gap-2 mt-4 text-gray-300 font-medium hover:text-white transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+                  >
+                    {link.label}
+                  </a>
+                ))}
               </article>
             ))}
           </div>
