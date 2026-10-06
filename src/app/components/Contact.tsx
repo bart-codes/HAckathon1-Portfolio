@@ -126,11 +126,16 @@ export default function Contact() {
         {/* Footer */}
         <footer className="mt-16 text-center">
           <div className="backdrop-blur-sm bg-white/5 border border-white/10 rounded-2xl p-6">
-            <p className="text-gray-400">
-              © 2026 <span className="text-blue-400 font-semibold">bart-codes</span>. Built with passion using the MERN stack.
-            </p>
-            <p className="text-gray-500 text-sm mt-2">
-              Designed for developers, by a developer.
+            <p className="mt-4 text-xs text-gray-400">
+              © {new Date().getFullYear()} Brian Muturi. Designed and built from scratch with React, TypeScript and Vite.{" "}
+              <a
+                  href="https://github.com/bart-codes"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-blue-400 underline-offset-4 hover:text-blue-300 hover:underline"
+              >
+                  View my code on GitHub
+              </a>
             </p>
           </div>
         </footer>
