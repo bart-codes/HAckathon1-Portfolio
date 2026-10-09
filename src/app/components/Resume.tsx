@@ -9,18 +9,57 @@ import {
   GitBranch,
   Users,
   Download,
+  Github,
 } from "lucide-react";
+import resumeUrl from "../../../Resume.pdf?no-inline";
 
-const resumeUrl = "/Resume.pdf";
+const projects = [
+  {
+    label: "SkillSwap",
+    description:
+      "MERN skill-exchange platform with user matching, real-time chat and session scheduling.",
+    stack: "React, Bootstrap, Node.js, Express, MongoDB, JWT, Socket.io",
+    href: "https://github.com/bart-codes/skilswap-final-capstone",
+  },
+  {
+    label: "SmartSeason",
+    description:
+      "Role-based farm monitoring app for field assignments, crop updates, notes and dashboards.",
+    stack: "React, Vite, Node.js, Express, SQLite, JWT",
+    href: "https://github.com/bart-codes/SmartSeason_Field_Monitorig_System",
+  },
+  {
+    label: "Student Records Management System",
+    description:
+      "Student and admin dashboards for managing records, courses, grades and reports, with security controls.",
+    stack: "PHP, MySQL, HTML, CSS; prepared statements, password hashing, CSRF protection",
+    href: "https://github.com/bart-codes/Student-records-management-systems",
+  },
+  {
+    label: "Lumina | Privacy-first support platform",
+    description:
+      "Architecture design only, not a shipped product. Covers anonymous profiles, encrypted journals, a quick-exit flow and strict access control.",
+    stack: "Design concept: Next.js, Node.js, PostgreSQL, AES-256-GCM",
+  },
+];
 
 const experience = [
   {
     title: "IT Technician",
     company: "Phentak Construction, Nakuru",
-    period: "Sept 2023 - Aug 2024",
-    // TODO: describe what you actually did here (support, networks, hardware, systems).
-    // The description only shows when it is set.
-    description: "",
+    period: "Sept 2023 - Aug 2024 | On-site",
+    responsibilities: [
+      "Installed and updated Windows, Ubuntu, SDP3 and Archicad architectural design software.",
+    ],
+  },
+  {
+    title: "Freelance IT Technician",
+    company: "On-call support for students at homes and schools",
+    period: "Freelance",
+    responsibilities: [
+      "Diagnosed hardware and software issues, troubleshot faults, repaired devices and replaced faulty parts.",
+      "Backed up and restored systems with Acronis and managed backup storage.",
+    ],
   },
 ];
 
@@ -40,13 +79,28 @@ const education = [
 ];
 
 const skills = [
+  { name: "MongoDB, Express, React & Node.js", icon: Code2, color: "text-cyan-400" },
+  { name: "PHP, MySQL & SQLite", icon: Code2, color: "text-purple-400" },
+  { name: "JavaScript, TypeScript, HTML & CSS", icon: Code2, color: "text-yellow-400" },
+  { name: "JWT, REST APIs & Socket.io", icon: Code2, color: "text-green-400" },
+  { name: "Vite, Bootstrap & Git/GitHub", icon: GitBranch, color: "text-orange-400" },
+  { name: "Acronis backup & restore; backup storage management", icon: Briefcase, color: "text-blue-400" },
+  { name: "Hardware/software diagnostics, troubleshooting, repair & part replacement", icon: Briefcase, color: "text-cyan-400" },
+  { name: "Windows, Ubuntu, SDP3 & Archicad installation and updates", icon: Briefcase, color: "text-indigo-400" },
   { name: "MS Office", icon: FileText, color: "text-blue-400" },
   { name: "Problem solving", icon: Lightbulb, color: "text-yellow-400" },
-  { name: "Git & GitHub", icon: GitBranch, color: "text-orange-400" },
   { name: "Teamwork", icon: Users, color: "text-green-400" },
 ];
 
 const awards = [
+  {
+    title: "Cisco IT Support Basics",
+    issuer: "Cisco Networking Academy",
+  },
+  {
+    title: "Google Analytics Certification",
+    issuer: "Google Skillshop",
+  },
   {
     title: "Certificate in Software",
     issuer: "Issued by the A.E.T.E.B board of examiners",
@@ -73,11 +127,11 @@ export default function Resume() {
             View My <span className="text-purple-400">Resume</span>
           </h2>
           <p className="text-gray-400 text-lg mb-8">
-            Where I've worked, what I'm studying and what I'm building
+            Full-stack development, IT support, projects and certifications
           </p>
           <a
             href={resumeUrl}
-            download
+            download="Brian-Muturi-Resume.pdf"
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold transition-all hover:shadow-lg hover:shadow-purple-500/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-400"
           >
             <Download className="w-5 h-5" />
@@ -111,8 +165,51 @@ export default function Resume() {
                       {job.company}
                     </p>
                     <p className="text-gray-400 text-sm mb-3">{job.period}</p>
-                    {job.description && (
-                      <p className="text-gray-300">{job.description}</p>
+                    {job.responsibilities.length > 0 && (
+                      <ul className="list-disc space-y-1 pl-5 text-gray-300">
+                        {job.responsibilities.map((responsibility) => (
+                          <li key={responsibility}>{responsibility}</li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Projects */}
+            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-3 bg-cyan-500/20 rounded-lg border border-cyan-500/30">
+                  <Code2 className="w-6 h-6 text-cyan-400" />
+                </div>
+                <h3 className="text-3xl font-bold text-white">Projects</h3>
+              </div>
+
+              <div className="space-y-6">
+                {projects.map((project) => (
+                  <div
+                    key={project.label}
+                    className="relative pl-6 border-l-2 border-cyan-500/30"
+                  >
+                    <div className="absolute -left-2 top-0 w-4 h-4 bg-cyan-500 rounded-full border-2 border-gray-900" />
+                    <h4 className="text-xl font-bold text-white mb-1">
+                      {project.label}
+                    </h4>
+                    <p className="text-gray-300 mb-2">{project.description}</p>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {project.stack}
+                    </p>
+                    {project.href && (
+                      <a
+                        href={project.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300"
+                      >
+                        <Github className="h-4 w-4" />
+                        View on GitHub
+                      </a>
                     )}
                   </div>
                 ))}
@@ -186,16 +283,24 @@ export default function Resume() {
                   <div className="p-3 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
                     <Award className="w-6 h-6 text-yellow-400" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white">Awards</h3>
+                  <h3 className="text-3xl font-bold text-white">
+                    Certifications &amp; Badges
+                  </h3>
                 </div>
 
                 <div className="space-y-4">
                   {awards.map((award, index) => (
-                    <div key={index}>
-                      <h4 className="text-lg font-bold text-white mb-1">
-                        {award.title}
-                      </h4>
-                      <p className="text-gray-300 text-sm">{award.issuer}</p>
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 rounded-xl border border-yellow-500/20 bg-yellow-500/5 p-4"
+                    >
+                      <Award className="mt-0.5 h-5 w-5 shrink-0 text-yellow-400" />
+                      <div>
+                        <h4 className="text-base font-bold text-white">
+                          {award.title}
+                        </h4>
+                        <p className="text-gray-300 text-sm">{award.issuer}</p>
+                      </div>
                     </div>
                   ))}
                 </div>
