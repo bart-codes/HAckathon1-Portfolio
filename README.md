@@ -10,6 +10,12 @@ This repository contains a dark-themed developer portfolio built with:
 
 The original design is based on the Dark-Themed Developer Portfolio Figma bundle.
 
+## Live site
+
+Visit the deployed portfolio here:
+
+https://bart-codes.github.io/HAckathon1-Portfolio
+
 ## Local development
 
 1. Install dependencies:
